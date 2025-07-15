@@ -1,4 +1,51 @@
- void setup() {
+void SSD1_ON() {
+  digitalWrite(2, HIGH);
+  digitalWrite(1, HIGH);
+}
+
+
+void BUZZLER_ON() {
+
+  digitalWrite(5, HIGH);
+}
+
+void SSD1_OFF() {
+  digitalWrite(2, LOW);
+  digitalWrite(1, LOW);
+}
+
+void BUZZLER_OFF() {
+
+  digitalWrite(5, LOW);
+}
+
+void SSD2_ON() {
+
+  digitalWrite(3, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(12, HIGH);
+  digitalWrite(7, HIGH);
+
+
+
+}
+
+void SSD2_OFF() {
+
+  digitalWrite(3, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(7, LOW);
+
+
+
+}
+
+
+
+void setup() {
   pinMode(1, OUTPUT);
   pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
@@ -11,44 +58,23 @@
 
 void loop() {
 
-  digitalWrite(2, HIGH);
-  digitalWrite(1, HIGH);
-  
 
-  digitalWrite(5, HIGH);
+  SSD1_ON();
+  BUZZLER_ON();
+  delay(700);
+
+  SSD1_OFF();
+  BUZZLER_OFF();
   delay(700);
 
 
-
-  digitalWrite(2, LOW);
-  digitalWrite(1, LOW);
- 
-
-  digitalWrite(5, LOW);
+  SSD2_ON();
+  BUZZLER_ON();
   delay(700);
 
-
-
-
-
-  digitalWrite(3, HIGH);
-  digitalWrite(9, HIGH);
-  digitalWrite(2, HIGH);
-  digitalWrite(12, HIGH);
-  digitalWrite(7, HIGH);
-  
-
-  digitalWrite(5, HIGH);
+  SSD2_OFF();
+  BUZZLER_OFF();
   delay(700);
 
-  digitalWrite(3, LOW);
-  digitalWrite(9, LOW);
-  digitalWrite(2, LOW);
-  digitalWrite(12, LOW);
-  digitalWrite(7, LOW);
-
-
-digitalWrite(5, LOW);
-  delay(700)
 
 }
