@@ -1,0 +1,22 @@
+int sensorPIN = A0;      // IR sensor output pin
+int buzzerPIN = 8;      // Buzzer pin
+int sensorValue ;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensorPIN, INPUT);   // IR sensor
+  pinMode(buzzerPIN, OUTPUT);  // Buzzer
+}
+
+void loop() {
+  sensorValue = analogRead(sensorPIN);
+  Serial.println(sensorValue);  // Print sensor value (HIGH or LOW)
+
+  if (sensorValue > 500 ) {   // Try HIGH instead of LOW
+    digitalWrite(buzzerPIN, HIGH);  // Buzzer ON
+  } else {
+    digitalWrite(buzzerPIN, LOW);   // Buzzer OFF
+  }
+
+  delay(400);
+}
