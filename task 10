@@ -1,0 +1,30 @@
+ #include <Servo.h>
+
+Servo servo1;
+
+int sensorPIN = A1;      
+int sensorValue;         
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensorPIN, INPUT);
+  servo1.attach(6);      
+  servo1.write(0);       
+}
+
+void loop() {
+  sensorValue = analogRead(sensorPIN);
+  Serial.print("Sensor Value: ");
+  Serial.println(sensorValue);
+
+  if (sensorValue > 100) {   
+    Serial.println("Object is detected. Door is opening...");
+    delay(1000);
+    servo1.write(90);      
+    delay(5000); 
+    servo1.write(0);
+                 
+  } 
+ 
+ 
+}
