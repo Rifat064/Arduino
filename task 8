@@ -1,0 +1,18 @@
+int LEDPIN=6;
+int brightness=455;
+
+void setup(){
+
+   pinMode( LEDPIN,OUTPUT);
+  
+}
+void loop(){
+  for( int fadevalue=0; fadevalue <=255; fadevalue=fadevalue+5){
+    analogWrite( LEDPIN, fadevalue);
+    delay (20);
+  }
+   for( int fadevalue=255; fadevalue >=0; fadevalue=fadevalue-5){
+    analogWrite( LEDPIN, fadevalue);
+    delay(20);
+  }
+}
