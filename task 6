@@ -1,0 +1,33 @@
+int sensorPIN = A1;
+int sensorValue;
+
+void LED_ON(){
+  digitalWrite(8,HIGH);
+ 
+}
+
+void LED_OFF(){
+
+    digitalWrite(8,LOW);
+}
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensorPIN, INPUT);
+  pinMode(8, OUTPUT);
+
+ 
+}
+
+void loop() {
+  sensorValue = analogRead(sensorPIN);
+
+  if (sensorValue>50)
+   { 
+   LED_OFF();
+   }
+   else if( sensorValue<50)
+   {
+    LED_ON();
+   }
+ 
+}
