@@ -1,0 +1,25 @@
+char x;
+int ledpin=9;
+
+void setup(){
+ Serial.begin(9600);
+ pinMode(ledpin, OUTPUT);
+  
+}
+void loop(){
+
+ if (Serial.available()>0)
+ x=Serial.read();
+
+ if(x=='p')
+ digitalWrite(ledpin, HIGH);
+ 
+
+ else if(x=='q')
+ digitalWrite (ledpin, LOW);
+ 
+
+
+ 
+
+}
