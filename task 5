@@ -1,0 +1,78 @@
+ int sensorPIN = A1;
+int sensorValue;
+
+
+void SSD1_ON() {
+  digitalWrite(11, HIGH);
+  digitalWrite(7, HIGH);
+  delay(8000);
+  digitalWrite(11, LOW);
+  digitalWrite(7, LOW);
+  delay(50);
+ 
+
+}
+
+void SSD2_ON() {
+
+  digitalWrite(8, HIGH);
+  digitalWrite(11, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(4, HIGH);
+  delay(8000);
+
+  digitalWrite(8, LOW);
+  digitalWrite(11, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+  delay (50);
+ 
+
+
+
+}
+
+
+void setup() {
+
+  Serial.begin(9600);
+  pinMode(sensorPIN, INPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(7, OUTPUT);
+
+
+
+
+
+
+}
+void loop() {
+
+  sensorValue = analogRead(sensorPIN);
+
+  if (sensorValue >= 200 && sensorValue <= 300)
+  {
+     Serial.println(sensorValue);
+  delay (300);
+    SSD1_ON();
+   
+
+  }
+
+  else if (sensorValue >= 301 && sensorValue <= 400)
+  {
+     Serial.println(sensorValue);
+  delay (300);
+    SSD2_ON();
+ 
+
+  }
+  Serial.println(sensorValue);
+  delay (300);
+}
