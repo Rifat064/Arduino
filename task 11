@@ -1,0 +1,26 @@
+ #include <Servo.h>
+Servo servo1;
+
+int pushvalue;
+int pushpin = 3;
+int angle = 0;
+
+void setup() {
+  pinMode(pushpin, INPUT_PULLUP);  // Button normally HIGH, pressed = LOW
+  servo1.attach(6);
+  servo1.write(0);  // Start at 0 degrees
+}
+
+void loop() {
+  pushvalue = digitalRead(pushpin);
+
+  if (pushvalue == LOW) {  // Button is pressed
+    angle += 10;
+     servo1.write(angle);
+    delay(200);  // Debounce delay
+  }
+  else if ( pushvalue == HIGH)
+  {
+      servo1.write(angle);
+  }
+}
