@@ -1,0 +1,43 @@
+int trigPin = 5;
+int echoPin = 6;
+int ledPin = 7;
+
+long duration;
+float distance;
+int blinkDelay;
+
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Send trigger pulse
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2; // cm
+
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  // Map distance to blink delay (faster when close, slower when far)
+  // Assuming distance between 5 cm and 100 cm
+  blinkDelay = map(distance, 5, 100, 50, 1000);
+  blinkDelay = constrain(blinkDelay, 50, 1000);  // Limit to reasonable range
+
+  // Blink the LED
+  digitalWrite(ledPin, HIGH);
+  delay(blinkDelay);
+  digitalWrite(ledPin, LOW);
+  delay(blinkDelay);
+}
